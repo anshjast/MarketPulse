@@ -1,0 +1,71 @@
+{
+    "status": "ok",
+    "totalResults": 5,
+    "articles": [
+        {
+            "source": {
+                "id": null,
+                "name": "BusinessLine"
+            },
+            "author": "ANI",
+            "title": "Indian pharma sector needs price hikes, site and IP transfers to tackle US tariff uncertainty: Report",
+            "description": "The report further noted that companies remain hopeful yet cautious around new growth avenues and product launches, which could help them offset the erosion in high-value launches",
+            "url": "https://www.thehindubusinessline.com/economy/indian-pharma-sector-needs-price-hikes-site-and-ip-transfers-to-tackle-us-tariff-uncertainty-report/article70028449.ece",
+            "urlToImage": "https://bl-i.thgim.com/public/incoming/6577zy/article70028462.ece/alternates/LANDSCAPE_1200/IMG_BL_-_27_09_2018_-_87_2_1_OMCE9LVM.jpg",
+            "publishedAt": "2025-09-09T04:08:56Z",
+            "content": "The Indian pharmaceutical industry requires price increases, site and intellectual property (IP) transfers to deal with the prevailing uncertainty in the sector amid US tariffs, according to a report\u2026 [+2507 chars]"
+        },
+        {
+            "source": {
+                "id": "the-times-of-india",
+                "name": "The Times of India"
+            },
+            "author": "ANI",
+            "title": "Indian pharma sector needs price hikes, site and IP transfers to tackle US tariff uncertainty: Report",
+            "description": "A Systematix Research report indicates the Indian pharmaceutical industry is navigating uncertainty due to US tariffs, necessitating price increases, site transfers, and IP transfers. While raw material prices stabilize and companies explore new growth avenue\u2026",
+            "url": "https://economictimes.indiatimes.com/industry/healthcare/biotech/pharmaceuticals/indian-pharma-sector-needs-price-hikes-site-and-ip-transfers-to-tackle-us-tariff-uncertainty-report/articleshow/123777518.cms",
+            "urlToImage": "https://img.etimg.com/thumb/msid-123777527,width-1200,height-630,imgsize-14706,overlay-economictimes/articleshow.jpg",
+            "publishedAt": "2025-09-09T03:51:49Z",
+            "content": "The Indian pharmaceutical industry requires price increases, site and intellectual property (IP) transfers to deal with the prevailing uncertainty in the sector amid US tariffs, according to a report\u2026 [+2537 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Livemint"
+            },
+            "author": "list.metadata.agency",
+            "title": "Indian pharma sector needs price hikes, site and IP transfers to tackle US tariff uncertainty: Report",
+            "description": "The Indian pharmaceutical industry requires price increases, site and intellectual property (IP) transfers to deal with the prevailing uncertainty in the sector amid US tariffs, according to a report by Systematix Research",
+            "url": "https://www.livemint.com/companies/news/indian-pharma-sector-needs-price-hikes-site-and-ip-transfers-to-tackle-us-tariff-uncertainty-report-11757388205384.html",
+            "urlToImage": "https://www.livemint.com/lm-img/img/2024/12/06/1600x900/company_1_1733464951182_1733464958176.png",
+            "publishedAt": "2025-09-09T03:23:24Z",
+            "content": "New Delhi [India], September 9 (ANI): The Indian pharmaceutical industry requires price increases, site and intellectual property (IP) transfers to deal with the prevailing uncertainty in the sector \u2026 [+2539 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "BusinessLine"
+            },
+            "author": "ANI",
+            "title": "India's CRDMO sector is a $3 billion revenue industry: Jefferies",
+            "description": "The weight-loss and diabetes drug segment offers another layer of growth. The report estimates that intermediates for newer drugs such as Tirzepatide and Orforglipron could create a $1.2 billion market by 2030",
+            "url": "https://www.thehindubusinessline.com/economy/indias-crdmo-sector-is-a-3-billion-revenue-industry-jefferies/article69974450.ece",
+            "urlToImage": "https://bl-i.thgim.com/public/incoming/qhyhob/article69956254.ece/alternates/LANDSCAPE_1200/2023-11-27T000224Z_502694330_RC2C43AP2B8K_RTRMADP_3_PHARMACEUTICALS-INDIA-CHINA.JPG",
+            "publishedAt": "2025-08-25T08:20:58Z",
+            "content": "India's contract research, development, and manufacturing organisation (CRDMO) sector is emerging as one of the most dynamic growth stories in the global pharmaceutical landscape. According to a rece\u2026 [+2352 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Ndtvprofit.com"
+            },
+            "author": "Ananya Chaudhuri",
+            "title": "Divi's Labs Shares In Focus As Jefferies Upgrades To 'Buy', Eyes 16% Upside On Sustained Growth Momentum",
+            "description": "Divi's Labs Shares: Jefferies upgraded Divi's Laboratories Ltd. to Buy as it expects that the growth momentum will continue as custom synthesis segment and new launches will support. The brokerage has given a target price of Rs 7,150 apiece, which implied 16.\u2026",
+            "url": "https://www.ndtvprofit.com/markets/divis-labs-shares-in-focus-as-jefferies-upgrades-to-buy-eyes-16-upside-on-sustained-growth-momentum",
+            "urlToImage": "https://media.assettype.com/bloombergquint%2Fimport%2Fmedical-laboratory_650x400_81424398700.jpg?w=1200&auto=format%2Ccompress&ogImage=true",
+            "publishedAt": "2025-08-25T03:01:29Z",
+            "content": "Divi's Laboratories Ltd. share price will be in focus on Aug. 25 after global brokerage Jefferies upgraded the stock to 'Buy' as it expects that growth momentum will continue. Custom synthesis segmen\u2026 [+1838 chars]"
+        }
+    ]
+}

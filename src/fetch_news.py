@@ -36,23 +36,37 @@ def fetch_company_news(api_key, company_name, ticker, from_date, to_date, save_d
         print(f"❌ Failed to fetch news for {company_name}. Error: {e}")
 
 if __name__ == '__main__':
-    
     MY_API_KEY = "1017e27d41454b26bad24b3b1b3f4774"
 
     if MY_API_KEY == "PASTE_YOUR_API_KEY_HERE":
         print("Error: Please paste your News API key into the script.")
     else:
         companies = {
-            "RELIANCE.NS": "Reliance Industries",
-            "TCS.NS": "Tata Consultancy Services",
-            "HDFCBANK.NS": "HDFC Bank",
-            "INFY.NS": "Infosys",
-            "ICICIBANK.NS": "ICICI Bank",
-            "HINDUNILVR.NS": "Hindustan Unilever",
-            "BHARTIARTL.NS": "Bharti Airtel",
-            "ITC.NS": "ITC Limited",
-            "SBIN.NS": "State Bank of India",
-            "LT.NS": "Larsen & Toubro"
+            "ADANIENT.NS": "Adani Enterprises", "ADANIPORTS.NS": "Adani Ports",
+            "APOLLOHOSP.NS": "Apollo Hospitals", "ASIANPAINT.NS": "Asian Paints",
+            "AXISBANK.NS": "Axis Bank", "BAJAJ-AUTO.NS": "Bajaj Auto",
+            "BAJFINANCE.NS": "Bajaj Finance", "BAJAJFINSV.NS": "Bajaj Finserv",
+            "BPCL.NS": "Bharat Petroleum", "BHARTIARTL.NS": "Bharti Airtel",
+            "BRITANNIA.NS": "Britannia Industries", "CIPLA.NS": "Cipla",
+            "COALINDIA.NS": "Coal India", "DIVISLAB.NS": "Divi's Laboratories",
+            "DRREDDY.NS": "Dr. Reddy's Laboratories", "EICHERMOT.NS": "Eicher Motors",
+            "GRASIM.NS": "Grasim Industries", "HCLTECH.NS": "HCL Technologies",
+            "HDFCBANK.NS": "HDFC Bank", "HDFCLIFE.NS": "HDFC Life",
+            "HEROMOTOCO.NS": "Hero MotoCorp", "HINDALCO.NS": "Hindalco Industries",
+            "HINDUNILVR.NS": "Hindustan Unilever", "ICICIBANK.NS": "ICICI Bank",
+            "ITC.NS": "ITC Limited", "INDUSINDBK.NS": "IndusInd Bank",
+            "INFY.NS": "Infosys", "JSWSTEEL.NS": "JSW Steel",
+            "KOTAKBANK.NS": "Kotak Mahindra Bank", "LTIM.NS": "LTIMindtree",
+            "LT.NS": "Larsen & Toubro", "M&M.NS": "Mahindra & Mahindra",
+            "MARUTI.NS": "Maruti Suzuki", "NTPC.NS": "NTPC",
+            "NESTLEIND.NS": "Nestle India", "ONGC.NS": "ONGC",
+            "POWERGRID.NS": "Power Grid Corporation", "RELIANCE.NS": "Reliance Industries",
+            "SBILIFE.NS": "SBI Life Insurance", "SBIN.NS": "State Bank of India",
+            "SUNPHARMA.NS": "Sun Pharmaceutical", "TCS.NS": "Tata Consultancy Services",
+            "TATACONSUM.NS": "Tata Consumer Products", "TATAMOTORS.NS": "Tata Motors",
+            "TATASTEEL.NS": "Tata Steel", "TECHM.NS": "Tech Mahindra",
+            "TITAN.NS": "Titan Company", "UPL.NS": "UPL",
+            "ULTRACEMCO.NS": "UltraTech Cement", "WIPRO.NS": "Wipro"
         }
 
         to_date_str = datetime.today().strftime('%Y-%m-%d')
@@ -60,6 +74,6 @@ if __name__ == '__main__':
 
         for ticker, name in companies.items():
             fetch_company_news(MY_API_KEY, name, ticker, from_date=from_date_str, to_date=to_date_str)
-            time.sleep(1) 
+            time.sleep(1)
 
         print("\n--- News fetching complete. ---")

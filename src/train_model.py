@@ -14,8 +14,8 @@ def train_classification_model(data_path='data/processed/final_dataset.csv', mod
     df = pd.read_csv(data_path, index_col='Date', parse_dates=True)
 
     features = [
-        'Open', 'High', 'Low', 'Close', 'Volume', 
-        'sentiment_score', 'SMA_20', 'RSI_14'
+    'Open', 'High', 'Low', 'Close', 'Volume', 'sentiment_score', 
+    'SMA_20', 'RSI_14', 'MACD', 'MACD_Signal', 'Upper_Band', 'Lower_Band'
     ]
     target = 'Target'
 

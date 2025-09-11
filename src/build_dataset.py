@@ -2,12 +2,11 @@ import pandas as pd
 import os
 import numpy as np
 
+# --- (Keep your existing SMA and RSI functions here) ---
 def calculate_sma(data, length=20):
-    """Calculates the Simple Moving Average (SMA)."""
     return data['Close'].rolling(window=length).mean()
 
 def calculate_rsi(data, length=14):
-    """Calculates the Relative Strength Index (RSI)."""
     delta = data['Close'].diff()
     gain = (delta.where(delta > 0, 0)).rolling(window=length).mean()
     loss = (-delta.where(delta < 0, 0)).rolling(window=length).mean()
@@ -16,12 +15,25 @@ def calculate_rsi(data, length=14):
     rsi = 100 - (100 / (1 + rs))
     return rsi
 
+# --- NEW FUNCTIONS TO ADD ---
+def calculate_macd(data, slow=26, fast=12, signal=9):
+    """Calculates the Moving Average Convergence Divergence (MACD)."""
+    exp1 = data['Close'].ewm(span=fast, adjust=False).mean()
+    exp2 = data['Close'].ewm(span=slow, adjust=False).mean()
+    macd = exp1 - exp2
+    signal_line = macd.ewm(span=signal, adjust=False).mean()
+    return macd, signal_line
+
+def calculate_bbands(data, length=20, std_dev=2):
+    """Calculates Bollinger Bands."""
+    sma = data['Close'].rolling(window=length).mean()
+    std = data['Close'].rolling(window=length).std()
+    upper_band = sma + (std * std_dev)
+    lower_band = sma - (std * std_dev)
+    return upper_band, lower_band
+
 def build_master_dataset(price_dir='data/raw', sentiment_dir='data/processed', output_path='data/processed/final_dataset.csv'):
-    """
-    Merges price data with sentiment data, adds technical indicators,
-    and creates the final dataset for model training.
-    """
-    print("Building master dataset...")
+    print("Building master dataset with new features...")
     price_files = [f for f in os.listdir(price_dir) if f.endswith('.NS.csv')]
     
     all_stocks_df = []
@@ -30,7 +42,6 @@ def build_master_dataset(price_dir='data/raw', sentiment_dir='data/processed', o
         ticker = price_file.replace('.csv', '')
         print(f"--- Processing {ticker} ---")
 
-        # 1. Load price data and convert columns to numbers
         price_df = pd.read_csv(os.path.join(price_dir, price_file))
         numeric_cols = ['Open', 'High', 'Low', 'Close', 'Volume']
         for col in numeric_cols:
@@ -38,38 +49,32 @@ def build_master_dataset(price_dir='data/raw', sentiment_dir='data/processed', o
         price_df.dropna(subset=numeric_cols, inplace=True)
         price_df['Date'] = pd.to_datetime(price_df['Date']).dt.date
 
-        # --- CORRECTED LOGIC ---
-        # 2. Calculate technical indicators on the FULL price history
+        # Calculate indicators on the FULL price history
         price_df['SMA_20'] = calculate_sma(price_df)
         price_df['RSI_14'] = calculate_rsi(price_df)
         
-        # 3. Load sentiment data
+        # --- ADD NEW INDICATOR CALCULATIONS ---
+        price_df['MACD'], price_df['MACD_Signal'] = calculate_macd(price_df)
+        price_df['Upper_Band'], price_df['Lower_Band'] = calculate_bbands(price_df)
+        
+        # Load and merge sentiment data
         sentiment_file = f"{ticker}_sentiment.csv"
         sentiment_path = os.path.join(sentiment_dir, sentiment_file)
-        if not os.path.exists(sentiment_path):
-            print(f"Warning: Sentiment file not found for {ticker}. Skipping.")
-            continue
+        if not os.path.exists(sentiment_path): continue
         sentiment_df = pd.read_csv(sentiment_path)
         sentiment_df['date'] = pd.to_datetime(sentiment_df['date']).dt.date
-
-        # 4. Merge the price_df (now with indicators) with the sentiment_df
+        
         df = pd.merge(price_df, sentiment_df, left_on='Date', right_on='date', how='inner')
         df = df.drop(columns=['date']).set_index('Date')
-        # --- END OF CORRECTION ---
         
-        # 5. Create the Target Variable (Up or Down)
+        # Create Target and Ticker columns
         df['Target'] = (df['Close'].shift(-1) > df['Close']).astype(int)
-        
         df['Ticker'] = ticker
         
         all_stocks_df.append(df)
 
-    if not all_stocks_df:
-        print("\n❌ Error: No data was successfully processed for any stock.")
-        return
-
     final_df = pd.concat(all_stocks_df)
-    final_df.dropna(inplace=True) # This will now only drop a few rows
+    final_df.dropna(inplace=True)
     
     final_df.to_csv(output_path)
     print(f"\nFinal dataset shape: {final_df.shape}")
