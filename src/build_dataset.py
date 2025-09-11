@@ -2,7 +2,6 @@ import pandas as pd
 import os
 import numpy as np
 
-# --- (Keep your existing SMA and RSI functions here) ---
 def calculate_sma(data, length=20):
     return data['Close'].rolling(window=length).mean()
 
@@ -15,7 +14,6 @@ def calculate_rsi(data, length=14):
     rsi = 100 - (100 / (1 + rs))
     return rsi
 
-# --- NEW FUNCTIONS TO ADD ---
 def calculate_macd(data, slow=26, fast=12, signal=9):
     """Calculates the Moving Average Convergence Divergence (MACD)."""
     exp1 = data['Close'].ewm(span=fast, adjust=False).mean()
@@ -49,15 +47,12 @@ def build_master_dataset(price_dir='data/raw', sentiment_dir='data/processed', o
         price_df.dropna(subset=numeric_cols, inplace=True)
         price_df['Date'] = pd.to_datetime(price_df['Date']).dt.date
 
-        # Calculate indicators on the FULL price history
         price_df['SMA_20'] = calculate_sma(price_df)
         price_df['RSI_14'] = calculate_rsi(price_df)
         
-        # --- ADD NEW INDICATOR CALCULATIONS ---
         price_df['MACD'], price_df['MACD_Signal'] = calculate_macd(price_df)
         price_df['Upper_Band'], price_df['Lower_Band'] = calculate_bbands(price_df)
         
-        # Load and merge sentiment data
         sentiment_file = f"{ticker}_sentiment.csv"
         sentiment_path = os.path.join(sentiment_dir, sentiment_file)
         if not os.path.exists(sentiment_path): continue
@@ -67,7 +62,6 @@ def build_master_dataset(price_dir='data/raw', sentiment_dir='data/processed', o
         df = pd.merge(price_df, sentiment_df, left_on='Date', right_on='date', how='inner')
         df = df.drop(columns=['date']).set_index('Date')
         
-        # Create Target and Ticker columns
         df['Target'] = (df['Close'].shift(-1) > df['Close']).astype(int)
         df['Ticker'] = ticker
         
