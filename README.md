@@ -1,113 +1,125 @@
-# MarketPulse
+# 📘 MarketPulse
 
-MarketPulse is a Python-powered application that predicts the next day's stock trend for select NIFTY 50 companies using a combination of price action, technical indicators, and real-time news sentiment analysis.
+A data-driven stock trend prediction application combining technical indicators, news sentiment, and machine learning.
 
-## Features
+## 🚀 Overview
 
-- **Stock Trend Prediction:** Predicts whether the stock price will go up or down for NIFTY 50 companies.
-- **Technical Indicators:** Computes and uses features like SMA (Simple Moving Average), RSI (Relative Strength Index), MACD, and Bollinger Bands.
-- **News Sentiment Analysis:** Fetches company news using the NewsAPI and analyzes headline sentiment to improve prediction accuracy.
-- **Data Pipeline:** Automated fetching and processing of stock prices and news, building datasets, and training machine learning models.
-- **Web Interface:** Built with Streamlit for interactive usage.
+MarketPulse is a Streamlit-based application that predicts the next-day stock trend for selected NIFTY 50 companies.
 
-## How It Works
+It demonstrates how multiple data sources (market prices + news sentiment) can be ingested, processed, and converted into actionable signals using feature engineering and machine learning.
 
-1. **Fetch Stock Data:** Downloads historical stock price data for selected companies using Yahoo Finance.
-2. **Fetch News:** Retrieves recent news articles for each company using NewsAPI.
-3. **Process Sentiment:** Analyzes news headlines to calculate a daily sentiment score.
-4. **Build Dataset:** Merges price data, technical indicators, and sentiment scores into a unified dataset.
-5. **Model Training:** Trains an XGBoost classifier with hyperparameter tuning to predict next-day stock movement.
-6. **Web App:** Users select a company, and the model predicts the next day's trend based on the latest available data.
+## 🧠 What This Project Demonstrates
 
-## Setup Instructions
+API-driven data ingestion
 
-### Prerequisites
+Feature engineering with technical indicators
 
-- Python 3.8+
-- [Streamlit](https://streamlit.io/)
-- [pandas](https://pandas.pydata.org/)
-- [yfinance](https://pypi.org/project/yfinance/)
-- [newsapi-python](https://github.com/mattlisiv/newsapi-python)
-- [nltk](https://www.nltk.org/)
-- [scikit-learn](https://scikit-learn.org/)
-- [xgboost](https://xgboost.readthedocs.io/)
-- [joblib](https://joblib.readthedocs.io/)
+NLP-based sentiment analysis
 
-Install dependencies:
+ML-based prediction pipeline
 
-```bash
-pip install -r requirements.txt
+End-to-end data → insight → UI workflow
+
+## 🏗️ System Architecture
+## 🏗️ System Architecture
+
+```text
+[Yahoo Finance API]        [News API]
+        |                      |
+        v                      v
+ Market Price Data     News Sentiment Data
+        |                      |
+        +----------+-----------+
+                   |
+                   v
+     Feature Engineering + ML Model
+                   |
+                   v
+            Streamlit Web App
 ```
 
-### Data Collection & Preprocessing
 
-1. **Fetch Stock Prices:**
-   ```bash
-   python src/fetch_stock_prices.py
-   ```
-2. **Fetch News Articles:**
-   - Add your NewsAPI key to `src/fetch_news.py`.
-   ```bash
-   python src/fetch_news.py
-   ```
-3. **Process Sentiment:**
-   ```bash
-   python src/process_sentiment.py
-   ```
-4. **Build Dataset:**
-   ```bash
-   python src/build_dataset.py
-   ```
 
-### Model Training
+## ⚙️ Tech Stack
 
-```bash
-python src/train_model.py
+Frontend: Streamlit
+
+Data Sources: yFinance, NewsAPI
+
+Machine Learning: Scikit-learn (joblib)
+
+NLP: NLTK (VADER Sentiment Analyzer)
+
+Language: Python
+
+## ✨ Key Features
+
+Predicts next-day stock trend (Up / Down)
+
+Uses technical indicators:
+
+SMA
+
+RSI
+
+MACD
+
+Bollinger Bands
+
+Incorporates real-time news sentiment
+
+Displays prediction confidence
+
+Simple interactive UI
+
+## ▶️ How to Run
+1. Install dependencies
+pip install streamlit pandas yfinance newsapi-python nltk joblib scikit-learn
+
+2. Add your News API key
+MY_API_KEY = "YOUR_NEWS_API_KEY"
+
+3. Run the application
+streamlit run app.py
+
+## 📦 Sample Prediction Output
+### 📦 Sample Prediction Output
+
+```text
+Prediction: Likely to go UP
+Confidence: 78.4%
 ```
 
-This will save the trained model as `models/marketpulse_classifier.joblib`.
-
-### Running the Web App
-
-1. Add your NewsAPI key to `app.py` (replace `"PASTE_YOUR_API_KEY_HERE"`).
-2. Start the Streamlit app:
-   ```bash
-   streamlit run app.py
-   ```
-
-## Usage
-
-- Use the web interface to select a NIFTY 50 company.
-- Click "Predict Next Day Trend" to view the prediction and probability.
-
-## Project Structure
-
-```
-.
-├── app.py
-├── src/
-│   ├── fetch_stock_prices.py
-│   ├── fetch_news.py
-│   ├── process_sentiment.py
-│   ├── build_dataset.py
-│   └── train_model.py
-├── models/
-├── data/
-│   ├── raw/
-│   └── processed/
-└── requirements.txt
+```text
+Prediction: Likely to go DOWN or stay the same
+Confidence: 64.2%
 ```
 
-## Notes
 
-- You must provide your own NewsAPI key for news fetching and sentiment analysis.
-- The project is designed for educational purposes and is not intended for real trading.
+## 📈 Why This Matters
 
-## License
+This project mirrors real-world systems where:
 
-This project is currently not licensed.
+Multiple APIs feed raw signals
 
-## Author
+Data is transformed into structured features
 
-[anshjast](https://github.com/anshjast)
-```
+Models generate probabilistic outcomes
+
+Results are surfaced through simple interfaces
+
+These patterns are common in analytics platforms, GTM systems, and decision-support tools.
+
+## 🔮 Possible Enhancements
+
+Model retraining pipeline
+
+Historical prediction tracking
+
+Advanced NLP models
+
+Cloud deployment
+
+## 👤 Author
+
+Ansh Jast
